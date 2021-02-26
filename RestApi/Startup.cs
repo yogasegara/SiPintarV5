@@ -38,8 +38,6 @@ namespace RestApi
             services.AddSingleton<IKelurahanService, KelurahanService>();
             services.AddSingleton<IKecamatanService, KecamatanService>();
             services.AddSingleton<ICabangService, CabangService>();
-
-
             #endregion
 
             services.AddControllers();

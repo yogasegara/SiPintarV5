@@ -22,7 +22,17 @@ namespace AppPersistence.Mysql.Repositories
         {
             using var context = new AppDbContext();
 
-            IQueryable<Kelurahan> query = context.Kelurahan;
+            IQueryable<Kelurahan> query = (from kelurahan in context.Kelurahan
+                                           join kecamatan in context.Kecamatan on kelurahan.KodeKecamatan equals kecamatan.KodeKecamatan into gKecamatan
+                                           from kecamatan in gKecamatan.DefaultIfEmpty()                                          
+                                           select new Kelurahan()
+                                           {
+                                              KodeKelurahan = kelurahan.KodeKelurahan,
+                                              NamaKelurahan = kelurahan.NamaKelurahan,
+                                              KodeKecamatan = kelurahan.KodeKecamatan,
+                                              Kecamatan = kelurahan.Kecamatan,
+                                              JumlahJiwa = kelurahan.JumlahJiwa
+                                           });
 
             if (!string.IsNullOrWhiteSpace(param.KodeKelurahan))
                 query = query.Where(n => n.KodeKelurahan == param.KodeKelurahan);

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AppPersistence.Mysql.Models
@@ -10,6 +11,8 @@ namespace AppPersistence.Mysql.Models
 
         [Column("kecamatan")]
         public string NamaKecamatan { get; set; }     
-        public string KodeCabang { get; set; }  
+        public string KodeCabang { get; set; }
+
+        public virtual ICollection<Kelurahan> Kelurahan { get; set; }
     }
 }

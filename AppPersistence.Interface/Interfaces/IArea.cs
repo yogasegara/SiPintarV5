@@ -6,6 +6,7 @@ namespace AppPersistence.Interface
 {
     public interface IArea
     {
-        Task<IEnumerable<AreaDTo>> GetAllAsync(AreaDTo param);
+        Task<IEnumerable<MasterAreaDto>> GetAllAsync(MasterAreaDto param);      
     }
+
 }

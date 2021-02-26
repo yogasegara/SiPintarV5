@@ -1,7 +1,10 @@
 ﻿using AppBusiness.Data.DTOs;
+using AppBusiness.Data.Responses;
 using AppBusiness.Interface;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace RestApi.Controllers
@@ -16,20 +19,32 @@ namespace RestApi.Controllers
         public KelurahanController([FromServices] IBusiness business)
         {
             kelurahanService = business.IKelurahanService;
-
         }
 
         [HttpGet]
-        public async Task<IEnumerable<KelurahanDTo>> Get(string kodekelurahan,string namakelurahan, string kodekecamatan)
+        public async Task<JsonResult> Get(string kodekelurahan, string namakelurahan, string kodekecamatan)
         {
-            var param = new KelurahanDTo()
-            {
-                KodeKelurahan = kodekelurahan,
-                NamaKelurahan = namakelurahan,
-                KodeKecamatan = kodekecamatan
-            };
+            var watch = Stopwatch.StartNew();
 
-            return await Task.Run(() => kelurahanService.GetAll(param));
+            try
+            {
+                var param = new KelurahanDTo()
+                {
+                    KodeKelurahan = kodekelurahan,
+                    NamaKelurahan = namakelurahan,
+                    KodeKecamatan = kodekecamatan
+                };
+
+                AppResponse.ResponseGetData(await kelurahanService.GetAll(param));
+            }
+            catch (Exception e)
+            {
+                AppResponse.ResponseErrorGetData(e.InnerException != null ? e.InnerException.Message : e.Message);
+            }
+
+            watch.Stop();
+            AppResponse._result.execution_time = watch.ElapsedMilliseconds;
+            return new JsonResult(AppResponse._result);
         }
     }
 }

@@ -10,19 +10,29 @@ using System.Threading.Tasks;
 namespace AppPersistence.Mysql.Repositories
 {
     public class AreaRepository : IArea
-    {       
+    {
         private readonly IMapper _mapper;
 
         public AreaRepository(IMapper mapper)
-        {          
+        {
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<AreaDTo>> GetAllAsync(AreaDTo param)
+        public async Task<IEnumerable<MasterAreaDto>> GetAllAsync(MasterAreaDto param)
         {
             using var context = new AppDbContext();
 
-            IQueryable<Area> query = context.Area;
+            IQueryable<MasterArea> query = (from area in context.MasterArea
+                                            join wilayah in context.MasterWilayah on area.KodeWil equals wilayah.KodeWil into gWilayah
+                                            from wilayah in gWilayah.DefaultIfEmpty()
+                                            select new MasterArea()
+                                            {
+                                                KodeArea = area.KodeArea,
+                                                NamaArea = area.NamaArea,
+                                                KodeWil = area.KodeWil,
+                                                MasterWilayah = area.MasterWilayah,
+
+                                            });
 
             if (!string.IsNullOrWhiteSpace(param.KodeArea))
                 query = query.Where(n => n.KodeArea == param.KodeArea);
@@ -35,7 +45,10 @@ namespace AppPersistence.Mysql.Repositories
 
             var data = await query.ToListAsync();
 
-            return _mapper.Map<IEnumerable<AreaDTo>>(data);
+            return _mapper.Map<IEnumerable<MasterAreaDto>>(data);
         }
+
+
+
     }
 }

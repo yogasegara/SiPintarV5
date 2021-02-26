@@ -6,6 +6,6 @@ namespace AppBusiness.Interface
 {
     public interface IAreaService
     {
-        Task<IEnumerable<AreaDTo>> GetAll(AreaDTo param);
+        Task<IEnumerable<MasterAreaDto>> GetAll(MasterAreaDto param);
     }
 }

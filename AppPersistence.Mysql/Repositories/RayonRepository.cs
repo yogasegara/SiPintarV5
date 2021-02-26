@@ -10,19 +10,20 @@ using System.Threading.Tasks;
 namespace AppPersistence.Mysql.Repositories
 {
     public class RayonRepository : IRayon
-    {       
+    {
         private readonly IMapper _mapper;
 
         public RayonRepository(IMapper mapper)
-        {          
+        {
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<RayonDTo>> GetAllAsync(RayonDTo param)
+        public async Task<IEnumerable<MasterRayonDto>> GetAllAsync(MasterRayonDto param)
         {
             using var context = new AppDbContext();
 
-            IQueryable<Rayon> query = context.Rayon;
+            IQueryable<MasterRayon> query = context.MasterRayon;
+
 
             if (!string.IsNullOrWhiteSpace(param.KodeRayon))
                 query = query.Where(n => n.KodeRayon == param.KodeRayon);
@@ -45,7 +46,7 @@ namespace AppPersistence.Mysql.Repositories
 
             var data = await query.ToListAsync();
 
-            return _mapper.Map<IEnumerable<RayonDTo>>(data);
+            return _mapper.Map<IEnumerable<MasterRayonDto>>(data);
         }
     }
 }

@@ -2,7 +2,6 @@
 using AppBusiness.Data.Responses;
 using AppBusiness.Interface;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -11,33 +10,31 @@ using System.Threading.Tasks;
 namespace RestApi.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
-    public class PelangganController : ControllerBase
-    {
+    [Route("Master/[controller]")]
+    public class MasterWilayahController : ControllerBase
+    {           
 
-        private readonly IPelangganService pelangganService;
+        private readonly IWilayahService wilayahService;
 
-        public PelangganController([FromServices] IBusiness business)
+        public MasterWilayahController([FromServices]IBusiness business)
         {
-            pelangganService = business.IPelangganService;
-        }      
+            wilayahService = business.IWilayahService;
+        }
 
         [HttpGet]
-        public async Task<JsonResult> Get(int limit, string nosamb, string koderayon, string nama, string alamat)
+        public async Task<JsonResult> Get(string kodewil, string namawilayah)
         {
             var watch = Stopwatch.StartNew();
 
             try
             {
-                var param = new PelangganDTo()
+                var param = new MasterWilayahDto()
                 {
-                    NoSamb = nosamb,
-                    KodeRayon = koderayon,
-                    Nama = nama,
-                    Alamat = alamat
+                    KodeWil = kodewil,
+                    NamaWilayah = namawilayah
                 };
 
-                AppResponse.ResponseGetData(await pelangganService.GetAll(limit,param));
+                AppResponse.ResponseGetData(await wilayahService.GetAll(param));
             }
             catch (Exception e)
             {

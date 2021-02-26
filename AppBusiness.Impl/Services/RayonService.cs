@@ -15,7 +15,7 @@ namespace AppBusiness.Impl.Services
             rayon = persistence.Rayon;
         }
 
-        public async Task<IEnumerable<RayonDTo>> GetAll(RayonDTo param)
+        public async Task<IEnumerable<MasterRayonDto>> GetAll(MasterRayonDto param)
         {
             return await rayon.GetAllAsync(param);
         }

@@ -6,6 +6,6 @@ namespace AppPersistence.Interface
 {
     public interface IWilayah
     {
-        Task<IEnumerable<WilayahDTo>> GetAllAsync(WilayahDTo param);
+        Task<IEnumerable<MasterWilayahDto>> GetAllAsync(MasterWilayahDto param);
     }
 }

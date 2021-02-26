@@ -15,9 +15,9 @@ namespace AppBusiness.Impl.Services
             area = persistence.Area;
         }
 
-        public async Task<IEnumerable<AreaDTo>> GetAll(AreaDTo param)
+        public async Task<IEnumerable<MasterAreaDto>> GetAll(MasterAreaDto param)
         {
-            return await area.GetAllAsync(param);
+            return await area.GetAllAsync(param);           
         }
     }
 }

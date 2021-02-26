@@ -18,11 +18,11 @@ namespace AppPersistence.Mysql.Repositories
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<WilayahDTo>> GetAllAsync(WilayahDTo param)
+        public async Task<IEnumerable<MasterWilayahDto>> GetAllAsync(MasterWilayahDto param)
         {
             using var context = new AppDbContext();
 
-            IQueryable<Wilayah> query = context.Wilayah;
+            IQueryable<MasterWilayah> query = context.MasterWilayah;
 
             if (!string.IsNullOrWhiteSpace(param.KodeWil))
                 query = query.Where(n => n.KodeWil == param.KodeWil);
@@ -33,7 +33,7 @@ namespace AppPersistence.Mysql.Repositories
 
             var data = await query.ToListAsync();
 
-            return _mapper.Map<IEnumerable<WilayahDTo>>(data);
+            return _mapper.Map<IEnumerable<MasterWilayahDto>>(data);
         }
     }
 }

@@ -15,7 +15,7 @@ namespace AppBusiness.Impl.Services
             wilayah = persistence.Wilayah;
         }
 
-        public async Task<IEnumerable<WilayahDTo>> GetAll(WilayahDTo param)
+        public async Task<IEnumerable<MasterWilayahDto>> GetAll(MasterWilayahDto param)
         {
             return await wilayah.GetAllAsync(param);
         }

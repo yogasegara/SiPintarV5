@@ -6,6 +6,6 @@ namespace AppBusiness.Interface
 {
     public interface IRayonService
     {
-        Task<IEnumerable<RayonDTo>> GetAll(RayonDTo param);
+        Task<IEnumerable<MasterRayonDto>> GetAll(MasterRayonDto param);
     }
 }

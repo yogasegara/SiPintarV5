@@ -6,6 +6,6 @@ namespace AppBusiness.Interface
 {
     public interface IWilayahService
     {
-        Task<IEnumerable<WilayahDTo>> GetAll(WilayahDTo param);
+        Task<IEnumerable<MasterWilayahDto>> GetAll(MasterWilayahDto param);
     }
 }

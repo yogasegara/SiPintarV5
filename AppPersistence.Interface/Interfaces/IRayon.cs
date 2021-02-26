@@ -6,6 +6,6 @@ namespace AppPersistence.Interface
 {
     public interface IRayon
     {
-        Task<IEnumerable<RayonDTo>> GetAllAsync(RayonDTo param);
+        Task<IEnumerable<MasterRayonDto>> GetAllAsync(MasterRayonDto param);
     }
 }

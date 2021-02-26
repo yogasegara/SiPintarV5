@@ -2,7 +2,6 @@
 using AppBusiness.Data.Responses;
 using AppBusiness.Interface;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -11,33 +10,36 @@ using System.Threading.Tasks;
 namespace RestApi.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
-    public class PelangganController : ControllerBase
-    {
+    [Route("Master/[controller]")]
+    public class MasterRayonController : ControllerBase
+    {           
 
-        private readonly IPelangganService pelangganService;
+        private readonly IRayonService rayonService;
 
-        public PelangganController([FromServices] IBusiness business)
+        public MasterRayonController([FromServices]IBusiness business)
         {
-            pelangganService = business.IPelangganService;
-        }      
+            rayonService = business.IRayonService;
+        }
 
-        [HttpGet]
-        public async Task<JsonResult> Get(int limit, string nosamb, string koderayon, string nama, string alamat)
+        [HttpGet]    
+        public async Task<JsonResult> Get(string koderayon, string namarayon, string kodearea, string namaarea, string kodewil, string namawilayah)
         {
             var watch = Stopwatch.StartNew();
 
             try
             {
-                var param = new PelangganDTo()
+                var param = new MasterRayonDto()
                 {
-                    NoSamb = nosamb,
                     KodeRayon = koderayon,
-                    Nama = nama,
-                    Alamat = alamat
+                    NamaRayon = namarayon,
+                    KodeArea = kodearea,
+                    NamaArea = namaarea,
+                    KodeWil = kodewil,
+                    NamaWilayah = namawilayah,
+
                 };
 
-                AppResponse.ResponseGetData(await pelangganService.GetAll(limit,param));
+                AppResponse.ResponseGetData(await rayonService.GetAll(param));
             }
             catch (Exception e)
             {
@@ -48,5 +50,6 @@ namespace RestApi.Controllers
             AppResponse._result.execution_time = watch.ElapsedMilliseconds;
             return new JsonResult(AppResponse._result);
         }
+
     }
 }
