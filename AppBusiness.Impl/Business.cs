@@ -4,31 +4,31 @@ namespace AppBusiness.Business.Impl
 {
     public class Business : IBusiness
     {
-        public IPelangganService IPelangganService { get;  protected set; }    
-        public IRayonService IRayonService { get;  protected set; }
-        public IWilayahService IWilayahService { get; protected set; }
-        public IAreaService IAreaService { get; protected set; }
-        public IKelurahanService IKelurahanService { get; protected set; }
-        public IKecamatanService IKecamatanService { get; protected set; }
-        public ICabangService ICabangService { get; protected set; }
+        public IMasterPelangganService IMasterPelangganService { get;  protected set; }    
+        public IMasterRayonService IMasterRayonService { get;  protected set; }
+        public IMasterWilayahService IMasterWilayahService { get; protected set; }
+        public IMasterAreaService IMasterAreaService { get; protected set; }
+        public IMasterKelurahanService IMasterKelurahanService { get; protected set; }
+        public IMasterKecamatanService IMasterKecamatanService { get; protected set; }
+        public IMasterCabangService IMasterCabangService { get; protected set; }
+
+        public IMasterDiameterService IMasterDiameterService { get; protected set; }
+
 
         public Business(
-            IPelangganService iPelangganService,
-            IRayonService iRayonService,
-            IWilayahService iWilayahService,
-            IAreaService iAreaService, 
-            IKelurahanService iKelurahanService,
-            IKecamatanService iKecamatanService, 
-            ICabangService iCabangService)
+            IMasterPelangganService iMasterPelangganService, IMasterRayonService iMasterRayonService, 
+            IMasterWilayahService iMasterWilayahService, IMasterAreaService iMasterAreaService, 
+            IMasterKelurahanService iMasterKelurahanService, IMasterKecamatanService iMasterKecamatanService, 
+            IMasterCabangService iMasterCabangService, IMasterDiameterService iMasterDiameterService)
         {
-            IPelangganService = iPelangganService;
-            IRayonService = iRayonService;
-            IWilayahService = iWilayahService;
-            IPelangganService = iPelangganService;
-            IAreaService = iAreaService;
-            IKelurahanService = iKelurahanService;
-            IKecamatanService = iKecamatanService;
-            ICabangService = iCabangService;
+            IMasterPelangganService = iMasterPelangganService;
+            IMasterRayonService = iMasterRayonService;
+            IMasterWilayahService = iMasterWilayahService;
+            IMasterAreaService = iMasterAreaService;
+            IMasterKelurahanService = iMasterKelurahanService;
+            IMasterKecamatanService = iMasterKecamatanService;
+            IMasterCabangService = iMasterCabangService;
+            IMasterDiameterService = iMasterDiameterService;
         }
     }
 }

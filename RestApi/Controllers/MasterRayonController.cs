@@ -14,11 +14,11 @@ namespace RestApi.Controllers
     public class MasterRayonController : ControllerBase
     {           
 
-        private readonly IRayonService rayonService;
+        private readonly IMasterRayonService rayonService;
 
         public MasterRayonController([FromServices]IBusiness business)
         {
-            rayonService = business.IRayonService;
+            rayonService = business.IMasterRayonService;
         }
 
         [HttpGet]    

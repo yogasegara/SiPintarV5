@@ -6,14 +6,20 @@ using AutoMapper;
 namespace AppPersistence.Mysql
 {
     public class Persistence : IPersistence
-    {       
-        public IPelanggan Pelanggan { get; protected set; }
-        public IRayon Rayon { get; protected set; }
-        public IWilayah Wilayah { get; protected set; }
-        public IArea Area { get; protected set; }
-        public IKelurahan Kelurahan { get; protected set; }
-        public IKecamatan Kecamatan { get; protected set; }
-        public ICabang Cabang { get; protected set; }
+    {             
+        public IMasterRayon MasterRayon { get; protected set; }      
+        public IMasterArea MasterArea { get; protected set; }
+        public IMasterWilayah MasterWilayah { get; protected set; }
+
+
+        public IMasterKelurahan MasterKelurahan { get; protected set; }
+        public IMasterKecamatan MasterKecamatan { get; protected set; }
+        public IMasterCabang MasterCabang { get; protected set; }
+
+        public IMasterDiameter MasterDiameter { get; protected set; }
+
+
+        public IMasterPelanggan MasterPelanggan { get; protected set; }
 
 
         public Persistence()
@@ -24,14 +30,18 @@ namespace AppPersistence.Mysql
             });
 
             configuration.AssertConfigurationIsValid();
+           
+            MasterRayon = new MasterRayonRepository(new Mapper(configuration));
+            MasterWilayah = new MasterWilayahRepository(new Mapper(configuration));
+            MasterArea = new MasterAreaRepository(new Mapper(configuration));
+            MasterKelurahan = new MasterKelurahanRepository(new Mapper(configuration));
+            MasterKecamatan = new MasterKecamatanRepository(new Mapper(configuration));
+            MasterCabang = new MasterCabangRepository(new Mapper(configuration));
 
-            Pelanggan = new PelangganRepository(new Mapper(configuration));
-            Rayon = new RayonRepository(new Mapper(configuration));
-            Wilayah = new WilayahRepository(new Mapper(configuration));
-            Area = new AreaRepository(new Mapper(configuration));
-            Kelurahan = new KelurahanRepository(new Mapper(configuration));
-            Kecamatan = new KecamatanRepository(new Mapper(configuration));
-            Cabang = new CabangRepository(new Mapper(configuration));
+            MasterDiameter = new MasterDiameterRepository(new Mapper(configuration));
+
+
+            MasterPelanggan = new MasterPelangganRepository(new Mapper(configuration));
 
         }
 

@@ -31,13 +31,15 @@ namespace RestApi
             #endregion
 
             #region ADD Service
-            services.AddSingleton<IPelangganService, PelangganService>();
-            services.AddSingleton<IRayonService, RayonService>();
-            services.AddSingleton<IWilayahService, WilayahService>();
-            services.AddSingleton<IAreaService, AreaService>();
-            services.AddSingleton<IKelurahanService, KelurahanService>();
-            services.AddSingleton<IKecamatanService, KecamatanService>();
-            services.AddSingleton<ICabangService, CabangService>();
+            services.AddSingleton<IMasterRayonService, MasterRayonService>();
+            services.AddSingleton<IMasterAreaService, MasterAreaService>();
+            services.AddSingleton<IMasterWilayahService, MasterWilayahService>();          
+            services.AddSingleton<IMasterPelangganService, MasterPelangganService>();      
+            services.AddSingleton<IMasterKelurahanService, MasterKelurahanService>();
+            services.AddSingleton<IMasterKecamatanService, MasterKecamatanService>();
+            services.AddSingleton<IMasterCabangService, MasterCabangService>();
+            services.AddSingleton<IMasterDiameterService, MasterDiameterService>();
+
             #endregion
 
             services.AddControllers();

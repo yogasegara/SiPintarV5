@@ -18,8 +18,8 @@ namespace AppBusiness.Data.Responses
         {
             _result = new System.Dynamic.ExpandoObject();
             _result.status = "success";
-            _result.system_msg = "";
-            _result.ui_msg = "";
+            _result.system_msg = data.Count() == 0 ? "Tidak Ada Data" : "";
+            _result.ui_msg = data.Count() == 0 ? "Tidak Ada Data" : "";
             _result.record = data.Count();
             _result.data = data;
             return _result;

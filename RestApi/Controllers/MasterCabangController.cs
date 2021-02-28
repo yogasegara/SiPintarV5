@@ -3,6 +3,7 @@ using AppBusiness.Data.Responses;
 using AppBusiness.Interface;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
@@ -10,33 +11,33 @@ namespace RestApi.Controllers
 {
     [ApiController]
     [Route("Master/[controller]")]
-    public class MasterAreaController : ControllerBase
+    public class MasterCabangController : ControllerBase
     {
-        private readonly IMasterAreaService areaService;
 
-        public MasterAreaController([FromServices] IBusiness business)
+        private readonly IMasterCabangService cabangService;
+
+        public MasterCabangController([FromServices] IBusiness business)
         {
-            areaService = business.IMasterAreaService;
+            cabangService = business.IMasterCabangService;
         }
 
         [HttpGet]
-        public async Task<JsonResult> GetAsync(string kodearea, string namaarea, string kodewil)
+        public async Task<JsonResult> Get(string kodecabang, string namacabang)
         {
-            var watch = Stopwatch.StartNew();         
-         
+            var watch = Stopwatch.StartNew();
+
             try
             {
-                var param = new MasterAreaDto()
+                var param = new MasterCabangDTo()
                 {
-                    KodeArea = kodearea,
-                    NamaArea = namaarea,
-                    KodeWil = kodewil
-                };                      
+                    KodeCabang = kodecabang,
+                    NamaCabang = namacabang
+                };
 
-                AppResponse.ResponseGetData(await areaService.GetAll(param));
+                AppResponse.ResponseGetData(await cabangService.GetAll(param));
             }
             catch (Exception e)
-            {               
+            {
                 AppResponse.ResponseErrorGetData(e.InnerException != null ? e.InnerException.Message : e.Message);
             }
 

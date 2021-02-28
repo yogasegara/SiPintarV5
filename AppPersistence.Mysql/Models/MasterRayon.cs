@@ -17,11 +17,7 @@ namespace AppPersistence.Mysql.Models
         public string NamaWilayah { get; set; }
         public string KodeLoket { get; set; }
 
-
-     
-
-
-        //public virtual ICollection<Pelanggan> Pelanggan { get; set; }
+        public virtual ICollection<MasterPelanggan> MasterPelanggan { get; set; }
 
     }
 }

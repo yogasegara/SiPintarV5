@@ -2,13 +2,16 @@
 {
     public interface IBusiness
     {
-        IPelangganService IPelangganService { get; }
-        IRayonService IRayonService { get; }
-        IWilayahService IWilayahService { get; }
-        IAreaService IAreaService { get; }
-        IKelurahanService IKelurahanService { get; }
-        IKecamatanService IKecamatanService { get; }
-        ICabangService ICabangService { get; }
+        IMasterPelangganService IMasterPelangganService { get; }
+        IMasterRayonService IMasterRayonService { get; }
+        IMasterWilayahService IMasterWilayahService { get; }
+        IMasterAreaService IMasterAreaService { get; }
+        IMasterKelurahanService IMasterKelurahanService { get; }
+        IMasterKecamatanService IMasterKecamatanService { get; }
+        IMasterCabangService IMasterCabangService { get; }
+
+        IMasterDiameterService IMasterDiameterService { get; }
+
 
 
     }

@@ -11,30 +11,31 @@ namespace RestApi.Controllers
 {
     [ApiController]
     [Route("Master/[controller]")]
-    public class MasterWilayahController : ControllerBase
+    public class MasterKecamatanController : ControllerBase
     {           
 
-        private readonly IMasterWilayahService wilayahService;
+        private readonly IMasterKecamatanService kecamatanService;
 
-        public MasterWilayahController([FromServices]IBusiness business)
+        public MasterKecamatanController([FromServices]IBusiness business)
         {
-            wilayahService = business.IMasterWilayahService;
-        }
+            kecamatanService = business.IMasterKecamatanService;
+        }      
 
         [HttpGet]
-        public async Task<JsonResult> Get(string kodewil, string namawilayah)
+        public async Task<JsonResult> Get(string kodekecamatan, string namakecamatan, string kodecabang)
         {
             var watch = Stopwatch.StartNew();
 
             try
             {
-                var param = new MasterWilayahDto()
+                var param = new MasterKecamatanDTo()
                 {
-                    KodeWil = kodewil,
-                    NamaWilayah = namawilayah
+                    KodeKecamatan = kodekecamatan,
+                    NamaKecamatan = namakecamatan,
+                    KodeCabang = kodecabang
                 };
 
-                AppResponse.ResponseGetData(await wilayahService.GetAll(param));
+                AppResponse.ResponseGetData(await kecamatanService.GetAll(param));
             }
             catch (Exception e)
             {

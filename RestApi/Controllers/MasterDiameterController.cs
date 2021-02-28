@@ -11,30 +11,32 @@ namespace RestApi.Controllers
 {
     [ApiController]
     [Route("Master/[controller]")]
-    public class MasterWilayahController : ControllerBase
+    public class MasterDiameterController : ControllerBase
     {           
 
-        private readonly IMasterWilayahService wilayahService;
+        private readonly IMasterDiameterService diameterService;
 
-        public MasterWilayahController([FromServices]IBusiness business)
+        public MasterDiameterController([FromServices]IBusiness business)
         {
-            wilayahService = business.IMasterWilayahService;
+            diameterService = business.IMasterDiameterService;
         }
 
-        [HttpGet]
-        public async Task<JsonResult> Get(string kodewil, string namawilayah)
+        [HttpGet]    
+        public async Task<JsonResult> Get(string kodediameter, string ukuran, int? periodemulaiberlaku)
         {
             var watch = Stopwatch.StartNew();
 
             try
             {
-                var param = new MasterWilayahDto()
+                var param = new MasterDiameterDto()
                 {
-                    KodeWil = kodewil,
-                    NamaWilayah = namawilayah
+                    KodeDiameter = kodediameter,
+                    Ukuran = ukuran,
+                    PeriodeMulaiBerlaku = periodemulaiberlaku,                 
+
                 };
 
-                AppResponse.ResponseGetData(await wilayahService.GetAll(param));
+                AppResponse.ResponseGetData(await diameterService.GetAll(param));
             }
             catch (Exception e)
             {
@@ -45,5 +47,6 @@ namespace RestApi.Controllers
             AppResponse._result.execution_time = watch.ElapsedMilliseconds;
             return new JsonResult(AppResponse._result);
         }
+
     }
 }
