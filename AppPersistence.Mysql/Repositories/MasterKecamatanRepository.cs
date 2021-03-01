@@ -18,7 +18,7 @@ namespace AppPersistence.Mysql.Repositories
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<MasterKecamatanDTo>> GetAllAsync(MasterKecamatanDTo param)
+        public async Task<IEnumerable<MasterKecamatanDto>> GetAllAsync(MasterKecamatanDto param)
         {
             using var context = new AppDbContext();
 
@@ -44,7 +44,7 @@ namespace AppPersistence.Mysql.Repositories
 
             var data = await query.ToListAsync();
 
-            return _mapper.Map<IEnumerable<MasterKecamatanDTo>>(data);
+            return _mapper.Map<IEnumerable<MasterKecamatanDto>>(data);
         }
     }
 }

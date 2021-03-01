@@ -28,7 +28,7 @@ namespace RestApi.Controllers
 
             try
             {
-                var param = new MasterKelurahanDTo()
+                var param = new MasterKelurahanDto()
                 {
                     KodeKelurahan = kodekelurahan,
                     NamaKelurahan = namakelurahan,

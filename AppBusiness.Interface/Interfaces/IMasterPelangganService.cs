@@ -6,6 +6,6 @@ namespace AppBusiness.Interface
 {
     public interface IMasterPelangganService
     {
-        Task<IEnumerable<MasterPelangganDTo>> GetAll(int limit, MasterPelangganDTo param);
+        Task<IEnumerable<MasterPelangganDto>> GetAll(int limit, MasterPelangganDto param);
     }
 }

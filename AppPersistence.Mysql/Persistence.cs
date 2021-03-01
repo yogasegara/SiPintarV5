@@ -17,9 +17,18 @@ namespace AppPersistence.Mysql
         public IMasterCabang MasterCabang { get; protected set; }
 
         public IMasterDiameter MasterDiameter { get; protected set; }
+        public IMasterGolongan MasterGolongan { get; protected set; }
 
 
         public IMasterPelanggan MasterPelanggan { get; protected set; }
+        public IMasterKolektif MasterKolektif { get; protected set; }
+        public IMasterKondisiMeter MasterKondisiMeter { get; protected set; }
+        public IMasterSumberAir MasterSumberAir { get; protected set; }
+        public IMasterBlok MasterBlok { get; protected set; }
+        public IMasterMerekMeter MasterMerekMeter { get; protected set; }
+
+
+
 
 
         public Persistence()
@@ -39,9 +48,18 @@ namespace AppPersistence.Mysql
             MasterCabang = new MasterCabangRepository(new Mapper(configuration));
 
             MasterDiameter = new MasterDiameterRepository(new Mapper(configuration));
+            MasterGolongan = new MasterGolonganRepository(new Mapper(configuration));
 
 
             MasterPelanggan = new MasterPelangganRepository(new Mapper(configuration));
+            MasterKolektif = new MasterKolektifRepository(new Mapper(configuration));
+            MasterKondisiMeter = new MasterKondisiMeterRepository(new Mapper(configuration));
+            MasterSumberAir = new MasterSumberAirRepository(new Mapper(configuration));
+            MasterBlok = new MasterBlokRepository(new Mapper(configuration));
+            MasterMerekMeter = new MasterMerekMeterRepository(new Mapper(configuration));
+
+
+
 
         }
 

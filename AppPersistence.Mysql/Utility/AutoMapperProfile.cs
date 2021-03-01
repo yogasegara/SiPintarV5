@@ -8,6 +8,7 @@ namespace AppPersistence.Mysql.Utility
     {
         public AutoMapperProfile()
         {
+            #region Wilayah Administratif
 
             CreateMap<MasterRayon, MasterRayonDto>().ReverseMap();
 
@@ -18,20 +19,40 @@ namespace AppPersistence.Mysql.Utility
             CreateMap<MasterWilayah, MasterWilayahDto>().ReverseMap();
 
 
-            CreateMap<MasterKelurahan, MasterKelurahanDTo>().ReverseMap();
+            CreateMap<MasterKelurahan, MasterKelurahanDto>().ReverseMap();
 
-            CreateMap<MasterKecamatan, MasterKecamatanDTo>()
+            CreateMap<MasterKecamatan, MasterKecamatanDto>()
               .ForMember(dest => dest.NamaCabang, opt => opt.MapFrom(
                   src => !string.IsNullOrWhiteSpace(src.MasterCabang.NamaCabang) ? src.MasterCabang.NamaCabang : "-"));
 
-            CreateMap<MasterCabang, MasterCabangDTo>().ReverseMap();
+            CreateMap<MasterCabang, MasterCabangDto>().ReverseMap();
 
+            #endregion
+
+            #region Tarif & Golongan
 
             CreateMap<MasterDiameter, MasterDiameterDto>().ReverseMap();
-            
+
+            CreateMap<MasterGolongan, MasterGolonganDto>().ReverseMap();
+
+            #endregion
+
+            #region data atribute
+
+            CreateMap<MasterKolektif, MasterKolektifDto>().ReverseMap();
+            CreateMap<MasterKondisiMeter, MasterKondisiMeterDto>().ReverseMap();
+            CreateMap<MasterSumberAir, MasterSumberAirDto>().ReverseMap();
+            CreateMap<MasterBlok, MasterBlokDto>().ReverseMap();
+            CreateMap<MasterMerekMeter, MasterMerekMeterDto>().ReverseMap();
 
 
-            CreateMap<MasterPelanggan, MasterPelangganDTo>()
+
+
+            #endregion
+
+            #region Langganan
+
+            CreateMap<MasterPelanggan, MasterPelangganDto>()
                 .ForMember(dest => dest.NamaRayon, opt => opt.MapFrom(
                     src => !string.IsNullOrWhiteSpace(src.MasterRayon.NamaRayon) ? src.MasterRayon.NamaRayon : "-")
                 )
@@ -66,13 +87,30 @@ namespace AppPersistence.Mysql.Utility
                 )
 
 
-                .ForMember(dest => dest.Ukuran, opt => opt.MapFrom(
-                   src => !string.IsNullOrWhiteSpace(src.MasterDiameter.Ukuran) ? src.MasterDiameter.Ukuran : "-")
+                .ForMember(dest => dest.NamaDiameter, opt => opt.MapFrom(
+                   src => !string.IsNullOrWhiteSpace(src.MasterDiameter.NamaDiameter) ? src.MasterDiameter.NamaDiameter : "-")
+                )
+                .ForMember(dest => dest.NamaGolongan, opt => opt.MapFrom(
+                   src => !string.IsNullOrWhiteSpace(src.MasterGolongan.NamaGolongan) ? src.MasterGolongan.NamaGolongan : "-")
+                )
+                .ForMember(dest => dest.NamaKolektif, opt => opt.MapFrom(
+                   src => !string.IsNullOrWhiteSpace(src.MasterKolektif.NamaKolektif) ? src.MasterKolektif.NamaKolektif : "-")
+                )
+                .ForMember(dest => dest.NamaKondisiMeter, opt => opt.MapFrom(
+                   src => !string.IsNullOrWhiteSpace(src.MasterKondisiMeter.NamaKondisiMeter) ? src.MasterKondisiMeter.NamaKondisiMeter : "-")
+                )
+                .ForMember(dest => dest.NamaSumberAir, opt => opt.MapFrom(
+                   src => !string.IsNullOrWhiteSpace(src.MasterSumberAir.NamaSumberAir) ? src.MasterSumberAir.NamaSumberAir : "-")
+                )
+                .ForMember(dest => dest.NamaBlok, opt => opt.MapFrom(
+                   src => !string.IsNullOrWhiteSpace(src.MasterBlok.NamaBlok) ? src.MasterBlok.NamaBlok : "-")
+                )
+                .ForMember(dest => dest.NamaMerekMeter, opt => opt.MapFrom(
+                   src => !string.IsNullOrWhiteSpace(src.MasterMerekMeter.NamaMerekMeter) ? src.MasterMerekMeter.NamaMerekMeter : "-")
                 )
                 ;
 
-
-
+            #endregion
         }
     }
 }

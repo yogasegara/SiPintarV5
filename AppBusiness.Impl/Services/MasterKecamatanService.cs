@@ -15,7 +15,7 @@ namespace AppBusiness.Impl.Services
             kecamatan = persistence.MasterKecamatan;
         }
 
-        public async Task<IEnumerable<MasterKecamatanDTo>> GetAll(MasterKecamatanDTo param)
+        public async Task<IEnumerable<MasterKecamatanDto>> GetAll(MasterKecamatanDto param)
         {
             return await kecamatan.GetAllAsync(param);
         }

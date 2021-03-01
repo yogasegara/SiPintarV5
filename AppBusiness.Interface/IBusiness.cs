@@ -11,6 +11,14 @@
         IMasterCabangService IMasterCabangService { get; }
 
         IMasterDiameterService IMasterDiameterService { get; }
+        IMasterGolonganService IMasterGolonganService { get; }
+        IMasterKolektifService IMasterKolektifService { get; }
+        IMasterKondisiMeterService IMasterKondisiMeterService { get; }
+        IMasterSumberAirService IMasterSumberAirService { get; }
+        IMasterBlokService IMasterBlokService { get; }
+        IMasterMerekMeterService IMasterMerekMeterService { get; }
+
+
 
 
 

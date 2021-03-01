@@ -15,7 +15,7 @@ namespace AppBusiness.Impl.Services
             PelangganRepo = persistence.MasterPelanggan;
         }
 
-        public async Task<IEnumerable<MasterPelangganDTo>> GetAll(int limit, MasterPelangganDTo param)
+        public async Task<IEnumerable<MasterPelangganDto>> GetAll(int limit, MasterPelangganDto param)
         {
             return await PelangganRepo.GetAllAsync(limit,param);
         }

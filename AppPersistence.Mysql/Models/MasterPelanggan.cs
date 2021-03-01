@@ -19,7 +19,7 @@ namespace AppPersistence.Mysql.Models
         public string KodeKondisiMeter { get; set; }
         public string KodeSumberAir { get; set; }
         public string KodeBlok { get; set; }
-        public string KodeMerkMeter { get; set; }
+        public string KodeMerekMeter { get; set; }
         public string KodeAdministrasiLain { get; set; }
         public string KodePemeliharaanLain { get; set; }
         public string KodeRetribusiLain { get; set; }
@@ -55,6 +55,16 @@ namespace AppPersistence.Mysql.Models
         public virtual MasterRayon MasterRayon { get; set; } //join
         public virtual MasterKelurahan MasterKelurahan { get; set; } //join
         public virtual MasterDiameter MasterDiameter { get; set; } //join
+        public virtual MasterGolongan MasterGolongan { get; set; } //join
+        public virtual MasterKolektif MasterKolektif { get; set; } //join
+        public virtual MasterKondisiMeter MasterKondisiMeter { get; set; } //join
+        public virtual MasterSumberAir MasterSumberAir { get; set; } //join
+        public virtual MasterBlok MasterBlok { get; set; } //join
+        public virtual MasterMerekMeter MasterMerekMeter { get; set; } //join
+
+
+
+
 
 
 

@@ -22,7 +22,7 @@ namespace RestApi.Controllers
         }
 
         [HttpGet]    
-        public async Task<JsonResult> Get(string kodediameter, string ukuran, int? periodemulaiberlaku)
+        public async Task<JsonResult> Get(string kodediameter, int? periodemulaiberlaku, string namadiameter, bool? status)
         {
             var watch = Stopwatch.StartNew();
 
@@ -31,9 +31,9 @@ namespace RestApi.Controllers
                 var param = new MasterDiameterDto()
                 {
                     KodeDiameter = kodediameter,
-                    Ukuran = ukuran,
-                    PeriodeMulaiBerlaku = periodemulaiberlaku,                 
-
+                    NamaDiameter = namadiameter,
+                    PeriodeMulaiBerlaku = periodemulaiberlaku,
+                    Status = status
                 };
 
                 AppResponse.ResponseGetData(await diameterService.GetAll(param));

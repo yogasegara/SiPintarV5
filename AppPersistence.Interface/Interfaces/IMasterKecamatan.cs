@@ -6,6 +6,6 @@ namespace AppPersistence.Interface
 {
     public interface IMasterKecamatan
     {
-        Task<IEnumerable<MasterKecamatanDTo>> GetAllAsync(MasterKecamatanDTo param);
+        Task<IEnumerable<MasterKecamatanDto>> GetAllAsync(MasterKecamatanDto param);
     }
 }

@@ -22,14 +22,14 @@ namespace RestApi.Controllers
 
         [HttpGet]
         public async Task<JsonResult> Get(int limit, string nosamb, string nama, string alamat, string koderayon, string kodekelurahan,
-            string kodegol, string kodediameter, string kodekolektif, string kodekondisimeter, string kodesumberair, string kodeblok, string kodemerkmeter,
+            string kodegol, string kodediameter, string kodekolektif, string kodekondisimeter, string kodesumberair, string kodeblok, string kodemerekmeter,
             string nohp, string notelp, string noktp, string norekening, string serimeter, int? status, int? flag, string email, DateTime? tgldaftar)
         {
             var watch = Stopwatch.StartNew();
 
             try
             {
-                var param = new MasterPelangganDTo()
+                var param = new MasterPelangganDto()
                 {
                     NoSamb = nosamb,
                     Nama = nama,
@@ -42,7 +42,7 @@ namespace RestApi.Controllers
                     KodeKondisiMeter = kodekondisimeter,
                     KodeSumberAir = kodesumberair,
                     KodeBlok = kodeblok,
-                    KodeMerkMeter = kodemerkmeter,
+                    KodeMerekMeter = kodemerekmeter,
                     NoHp = nohp,
                     NoTelp = notelp,
                     NoKtp = noktp,

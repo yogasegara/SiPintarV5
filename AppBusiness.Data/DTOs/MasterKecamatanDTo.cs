@@ -1,6 +1,6 @@
 ﻿namespace AppBusiness.Data.DTOs
 {
-    public class MasterKecamatanDTo
+    public class MasterKecamatanDto
     {
         public string KodeKecamatan { get; set; }
         public string NamaKecamatan { get; set; }

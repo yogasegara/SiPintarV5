@@ -23,14 +23,19 @@ namespace RestApi
         public void ConfigureServices(IServiceCollection services)
         {
             #region ADD Persistence
+
             services.AddSingleton<IPersistence>(new Persistence());
+
             #endregion
 
             #region ADD Bussiness
+
             services.AddSingleton<IBusiness, Business>();
+
             #endregion
 
             #region ADD Service
+
             services.AddSingleton<IMasterRayonService, MasterRayonService>();
             services.AddSingleton<IMasterAreaService, MasterAreaService>();
             services.AddSingleton<IMasterWilayahService, MasterWilayahService>();          
@@ -39,6 +44,15 @@ namespace RestApi
             services.AddSingleton<IMasterKecamatanService, MasterKecamatanService>();
             services.AddSingleton<IMasterCabangService, MasterCabangService>();
             services.AddSingleton<IMasterDiameterService, MasterDiameterService>();
+            services.AddSingleton<IMasterGolonganService, MasterGolonganService>();
+            services.AddSingleton<IMasterKolektifService, MasterKolektifService>();
+            services.AddSingleton<IMasterKondisiMeterService, MasterKondisiMeterService>();
+            services.AddSingleton<IMasterSumberAirService, MasterSumberAirService>();
+            services.AddSingleton<IMasterBlokService, MasterBlokService>();
+            services.AddSingleton<IMasterMerekMeterService, MasterMerekMeterService>();
+
+
+
 
             #endregion
 

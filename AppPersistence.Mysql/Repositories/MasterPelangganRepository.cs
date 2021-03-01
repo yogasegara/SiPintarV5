@@ -19,17 +19,39 @@ namespace AppPersistence.Mysql.Repositories
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<MasterPelangganDTo>> GetAllAsync(int limit, MasterPelangganDTo param)
+        public async Task<IEnumerable<MasterPelangganDto>> GetAllAsync(int limit, MasterPelangganDto param)
         {
             using var context = new AppDbContext();
 
             IQueryable<MasterPelanggan> query = (from pelanggan in context.MasterPelanggan.Where(c => c.FlagHapus == false)
+
                                                  join rayon in context.MasterRayon on pelanggan.KodeRayon equals rayon.KodeRayon into gRayon
                                                  from rayon in gRayon.DefaultIfEmpty()
+
                                                  join kelurahan in context.MasterKelurahan on pelanggan.KodeKelurahan equals kelurahan.KodeKelurahan into gKelurahan
                                                  from kelurahan in gKelurahan.DefaultIfEmpty()
-                                                 join diameter in context.MasterDiameter on pelanggan.KodeDiameter equals diameter.KodeDiameter into gDiameter
+
+                                                 join diameter in context.MasterDiameter.Where(c => c.Status == true) on pelanggan.KodeDiameter equals diameter.KodeDiameter into gDiameter
                                                  from diameter in gDiameter.DefaultIfEmpty()
+
+                                                 join golongan in context.MasterGolongan.Where(c => c.Status == true) on pelanggan.KodeGol equals golongan.KodeGol into gGolongan
+                                                 from golongan in gGolongan.DefaultIfEmpty()
+
+                                                 join kolektif in context.MasterKolektif on pelanggan.KodeKolektif equals kolektif.KodeKolektif into gKolektif
+                                                 from kolektif in gKolektif.DefaultIfEmpty()
+
+                                                 join kondisimeter in context.MasterKondisiMeter on pelanggan.KodeKondisiMeter equals kondisimeter.KodeKondisiMeter into gKondisiMeter
+                                                 from kondisimeter in gKondisiMeter.DefaultIfEmpty()
+
+                                                 join sumberair in context.MasterSumberAir on pelanggan.KodeSumberAir equals sumberair.KodeSumberAir into gSumberair
+                                                 from sumberair in gSumberair.DefaultIfEmpty()
+
+                                                 join blok in context.MasterBlok on pelanggan.KodeBlok equals blok.KodeBlok into gBlok
+                                                 from blok in gBlok.DefaultIfEmpty()
+
+                                                 join merekmeter in context.MasterMerekMeter on pelanggan.KodeMerekMeter equals merekmeter.KodeMerekMeter into gMerekmeter
+                                                 from merekmeter in gMerekmeter.DefaultIfEmpty()
+
                                                  select new MasterPelanggan()
                                                  {
                                                      #region field from models
@@ -44,7 +66,7 @@ namespace AppPersistence.Mysql.Repositories
                                                      KodeKondisiMeter = pelanggan.KodeKondisiMeter,
                                                      KodeSumberAir = pelanggan.KodeSumberAir,
                                                      KodeBlok = pelanggan.KodeBlok,
-                                                     KodeMerkMeter = pelanggan.KodeMerkMeter,
+                                                     KodeMerekMeter = pelanggan.KodeMerekMeter,
                                                      KodeAdministrasiLain = pelanggan.KodeAdministrasiLain,
                                                      KodePemeliharaanLain = pelanggan.KodePemeliharaanLain,
                                                      KodeRetribusiLain = pelanggan.KodeRetribusiLain,
@@ -81,6 +103,14 @@ namespace AppPersistence.Mysql.Repositories
                                                      MasterRayon = pelanggan.MasterRayon,
                                                      MasterKelurahan = pelanggan.MasterKelurahan,
                                                      MasterDiameter = pelanggan.MasterDiameter,
+                                                     MasterGolongan = pelanggan.MasterGolongan,
+                                                     MasterKolektif = pelanggan.MasterKolektif,
+                                                     MasterKondisiMeter = pelanggan.MasterKondisiMeter,
+                                                     MasterSumberAir = pelanggan.MasterSumberAir,
+                                                     MasterBlok = pelanggan.MasterBlok,
+                                                     MasterMerekMeter = pelanggan.MasterMerekMeter,
+
+
                                                      #endregion
                                                  });
             #region where clouse
@@ -118,8 +148,8 @@ namespace AppPersistence.Mysql.Repositories
             if (!string.IsNullOrWhiteSpace(param.KodeBlok))
                 query = query.Where(n => n.KodeBlok == param.KodeBlok);
 
-            if (!string.IsNullOrWhiteSpace(param.KodeMerkMeter))
-                query = query.Where(n => n.KodeMerkMeter == param.KodeMerkMeter);
+            if (!string.IsNullOrWhiteSpace(param.KodeMerekMeter))
+                query = query.Where(n => n.KodeMerekMeter == param.KodeMerekMeter);
 
             if (!string.IsNullOrWhiteSpace(param.NoHp))
                 query = query.Where(n => n.NoHp == param.NoHp);
@@ -153,7 +183,7 @@ namespace AppPersistence.Mysql.Repositories
 
             var data = await query.Take(limit).ToListAsync();
 
-            return _mapper.Map<IEnumerable<MasterPelangganDTo>>(data);
+            return _mapper.Map<IEnumerable<MasterPelangganDto>>(data);
         }
 
     }

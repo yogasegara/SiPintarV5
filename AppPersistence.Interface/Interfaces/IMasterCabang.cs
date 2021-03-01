@@ -6,6 +6,6 @@ namespace AppPersistence.Interface
 {
     public interface IMasterCabang
     {
-        Task<IEnumerable<MasterCabangDTo>> GetAllAsync(MasterCabangDTo param);
+        Task<IEnumerable<MasterCabangDto>> GetAllAsync(MasterCabangDto param);
     }
 }

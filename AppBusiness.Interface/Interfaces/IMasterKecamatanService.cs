@@ -6,6 +6,6 @@ namespace AppBusiness.Interface
 {
     public interface IMasterKecamatanService
     {
-        Task<IEnumerable<MasterKecamatanDTo>> GetAll(MasterKecamatanDTo param);
+        Task<IEnumerable<MasterKecamatanDto>> GetAll(MasterKecamatanDto param);
     }
 }

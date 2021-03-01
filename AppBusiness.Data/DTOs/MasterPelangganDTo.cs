@@ -2,7 +2,7 @@
 
 namespace AppBusiness.Data.DTOs
 {
-    public class MasterPelangganDTo
+    public class MasterPelangganDto
     {
         public string NoSamb { get; set; }
         public string Nama { get; set; }
@@ -27,13 +27,20 @@ namespace AppBusiness.Data.DTOs
 
 
         public string KodeGol { get; set; }
+        public string NamaGolongan { get; set; }
         public string KodeDiameter { get; set; }
-        public string Ukuran { get; set; }
+        public string NamaDiameter { get; set; }
         public string KodeKolektif { get; set; }
+        public string NamaKolektif { get; set; }
         public string KodeKondisiMeter { get; set; }
+        public string NamaKondisiMeter { get; set; }
         public string KodeSumberAir { get; set; }
+        public string NamaSumberAir { get; set; }
         public string KodeBlok { get; set; }
-        public string KodeMerkMeter { get; set; }
+        public string NamaBlok { get; set; }
+        public string KodeMerekMeter { get; set; }
+        public string NamaMerekMeter { get; set; }
+
         public string KodeAdministrasiLain { get; set; }
         public string KodePemeliharaanLain { get; set; }
         public string KodeRetribusiLain { get; set; }

@@ -11,8 +11,18 @@
         IMasterCabang MasterCabang { get; }
 
         IMasterDiameter MasterDiameter { get; }
+        IMasterGolongan MasterGolongan { get; }
+
 
         IMasterPelanggan MasterPelanggan { get; }
+
+        IMasterKolektif MasterKolektif { get; }
+        IMasterKondisiMeter MasterKondisiMeter { get; }
+        IMasterSumberAir MasterSumberAir { get; }
+        IMasterBlok MasterBlok { get; }
+        IMasterMerekMeter MasterMerekMeter { get; }
+
+
 
 
     }

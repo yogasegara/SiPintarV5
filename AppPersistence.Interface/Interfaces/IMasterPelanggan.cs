@@ -6,6 +6,6 @@ namespace AppPersistence.Interface
 {
     public interface IMasterPelanggan
     {
-        Task<IEnumerable<MasterPelangganDTo>> GetAllAsync(int limit, MasterPelangganDTo param);
+        Task<IEnumerable<MasterPelangganDto>> GetAllAsync(int limit, MasterPelangganDto param);
     }
 }

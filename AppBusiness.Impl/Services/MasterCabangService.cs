@@ -15,7 +15,7 @@ namespace AppBusiness.Impl.Services
             cabang = persistence.MasterCabang;
         }
 
-        public async Task<IEnumerable<MasterCabangDTo>> GetAll(MasterCabangDTo param)
+        public async Task<IEnumerable<MasterCabangDto>> GetAll(MasterCabangDto param)
         {
             return await cabang.GetAllAsync(param);
         }

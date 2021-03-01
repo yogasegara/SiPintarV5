@@ -1,6 +1,6 @@
 ﻿namespace AppBusiness.Data.DTOs
 {
-    public class MasterKelurahanDTo
+    public class MasterKelurahanDto
     {
         public string KodeKelurahan { get; set; }
         public string NamaKelurahan { get; set; }

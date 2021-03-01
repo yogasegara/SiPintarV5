@@ -15,7 +15,7 @@ namespace AppBusiness.Impl.Services
             kelurahan = persistence.MasterKelurahan;
         }
 
-        public async Task<IEnumerable<MasterKelurahanDTo>> GetAll(MasterKelurahanDTo param)
+        public async Task<IEnumerable<MasterKelurahanDto>> GetAll(MasterKelurahanDto param)
         {
             return await kelurahan.GetAllAsync(param);
         }

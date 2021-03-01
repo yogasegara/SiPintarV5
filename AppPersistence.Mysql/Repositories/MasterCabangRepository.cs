@@ -18,7 +18,7 @@ namespace AppPersistence.Mysql.Repositories
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<MasterCabangDTo>> GetAllAsync(MasterCabangDTo param)
+        public async Task<IEnumerable<MasterCabangDto>> GetAllAsync(MasterCabangDto param)
         {
             using var context = new AppDbContext();
 
@@ -32,7 +32,7 @@ namespace AppPersistence.Mysql.Repositories
 
             var data = await query.ToListAsync();
 
-            return _mapper.Map<IEnumerable<MasterCabangDTo>>(data);
+            return _mapper.Map<IEnumerable<MasterCabangDto>>(data);
         }
     }
 }

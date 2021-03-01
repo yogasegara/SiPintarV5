@@ -23,19 +23,22 @@ namespace AppPersistence.Mysql.Repositories
         {
             using var context = new AppDbContext();
 
-            IQueryable<MasterDiameter> query = context.MasterDiameter;
+            IQueryable<MasterDiameter> query = context.MasterDiameter;          
+
            
+            if (!string.IsNullOrWhiteSpace(param.KodeDiameter))
+                query = query.Where(n => n.KodeDiameter == param.KodeDiameter);
 
             if (!string.IsNullOrWhiteSpace(Convert.ToString(param.PeriodeMulaiBerlaku)))
                 query = query.Where(n => n.PeriodeMulaiBerlaku == param.PeriodeMulaiBerlaku);
 
-            if (!string.IsNullOrWhiteSpace(param.KodeDiameter))
-                query = query.Where(n => n.KodeDiameter == param.KodeDiameter);
+            if (!string.IsNullOrWhiteSpace(param.NamaDiameter))
+                query = query.Where(n => EF.Functions.Like(n.NamaDiameter, $"%{param.NamaDiameter}%"));
 
-            if (!string.IsNullOrWhiteSpace(param.Ukuran))
-                query = query.Where(n => EF.Functions.Like(n.Ukuran, $"%{param.Ukuran}%"));
+            if (!string.IsNullOrWhiteSpace(Convert.ToString(param.Status)))
+                query = query.Where(n => n.Status == param.Status);
 
-           
+
 
             var data = await query.ToListAsync();
 
